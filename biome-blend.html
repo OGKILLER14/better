@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Biome Blend</title>
+</head>
+<body class="page-loading">
+    <header>
+        <a href="index.html" class="back-button">&#8592;</a>
+        <h1><u>Minecraft Biome Blend</u></h1>
+    </header>
+
+    <nav id="topic-nav">
+        <a href="#understanding-blend">Understanding Blend</a>
+        <a href="#use-builds">Use in Builds</a>
+        <a href="#why-gameplay">Why Gameplay</a>
+    </nav>
+
+    <section id="understanding-blend">
+        <h2>Understanding Biome Blending</h2>
+        <img src="pic/Understanding Biome Blending.jpg" alt="Understanding Biome Blending" class="section-image" />
+        <p>Biome blending is how Minecraft transitions between different landscapes. Good blending makes the world feel natural, while poor blending can make transitions look abrupt and out of place.</p>
+        <p>This topic is useful for players who want to build bases near multiple biomes or explore the world without hitting awkward borders between terrain types.</p>
+    </section>
+
+    <section id="use-builds">
+        <h2>Using Biome Blends in Your Builds</h2>
+        <img src="pic/Using Biome Blends in Your Builds.jpg" alt="Using Biome Blends in Your Builds" class="section-image" />
+        <p>When you create a home near a biome edge, think about how the terrain should flow. Use gradual elevation changes, mixed vegetation, and water features to make the border feel intentional.</p>
+        <p>Biome blending also matters when building adventure maps or roleplaying worlds, because it helps the environment feel believable and immersive.</p>
+    </section>
+
+    <section id="why-gameplay">
+        <h2>Why It Helps Gameplay</h2>
+        <img src="pic/Why It Helps Gameplay.jpg" alt="Why It Helps Gameplay" class="section-image" />
+        <p>Better biome blending improves exploration and can make your world easier to navigate. It also helps certain mobs and resources feel more consistent across the landscape.</p>
+        <p>Whether you want to travel from jungle to desert or connect a snowy village to a plains biome, thoughtful blending makes the journey as enjoyable as the destination.</p>
+    </section>
+
+    <footer>
+        &copy; 2024 Minecraft Biome Blend
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.remove('page-loading');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const pageLinks = document.querySelectorAll('a[href$=".html"]');
+            const topicLinks = document.querySelectorAll('#topic-nav a');
+
+            function setActiveLink(hash) {
+                topicLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === hash);
+                });
+            }
+
+            topicLinks.forEach(link => {
+                link.addEventListener('click', event => {
+                    event.preventDefault();
+                    const section = document.querySelector(link.getAttribute('href'));
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                        history.replaceState(null, '', link.getAttribute('href'));
+                        setActiveLink(link.getAttribute('href'));
+                    }
+                });
+            });
+
+            pageLinks.forEach(link => {
+                if (link.getAttribute('href').endsWith('.html') && link.getAttribute('href') !== currentPage) {
+                    link.addEventListener('click', event => {
+                        event.preventDefault();
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => window.location.href = link.getAttribute('href'), 300);
+                    });
+                }
+            });
+
+            setActiveLink(window.location.hash || '#understanding-blend');
+        });
+    </script>
+</body>
+</html>

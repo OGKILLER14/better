@@ -1,0 +1,328 @@
+html {
+    scroll-behavior: smooth;
+}
+@font-face {
+    font-family: 'Minecraftia';
+    src: url('font/Minecraftia-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body {
+    font-family: 'Minecraftia', 'Press Start 2P', monospace;
+    background: radial-gradient(circle at top, #1d2418 0%, #070a07 55%, #040604 100%);
+    color: #d8e6b7;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    line-height: 1.75;
+    letter-spacing: 0.02em;
+    opacity: 1;
+    transition: opacity 0.3s ease, background 0.5s ease;
+}
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.12;
+}
+body.page-loading {
+    opacity: 0;
+}
+body.fade-out {
+    opacity: 0;
+}
+header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 1rem 0 0.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+}
+.back-button {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    z-index: 999;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    transition: background-color 0.2s ease;
+}
+.back-button:hover {
+    background-color: #111;
+}
+#topic-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    background-color: rgba(14, 20, 12, 0.93);
+    border-radius: 20px;
+    padding: 16px 24px;
+    margin: 0 auto 1.5rem;
+    max-width: 1020px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+    border: 1px solid rgba(152, 227, 97, 0.2);
+}
+#topic-nav a {
+    text-decoration: none;
+    color: #c7e198;
+    padding: 10px 18px;
+    border-radius: 14px;
+    transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border 0.25s ease;
+    border: 1px solid transparent;
+}
+#topic-nav a:hover,
+#topic-nav a.active {
+    transform: translateY(-3px);
+    background-color: rgba(160, 219, 108, 0.16);
+    border-color: rgba(160, 219, 108, 0.28);
+    color: #f8ffd9;
+}
+#topic-nav a.active {
+    box-shadow: inset 0 0 0 1px rgba(160, 219, 108, 0.3);
+}
+#topic-nav a + a {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+#topic-nav a:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: #9cee86;
+    text-decoration-thickness: 4px;
+    color: #e5ffb3;
+    text-shadow: 0 0 18px rgba(154, 239, 97, 0.3);
+}
+h2 {
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: rgba(156, 250, 103, 0.8);
+    color: #d8e6b7;
+    margin-top: 0;
+}
+img {
+    display: block;
+    margin: 1rem auto;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 15px 34px rgba(0,0,0,0.3);
+}
+.section-image {
+    max-width: 640px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+}
+p {
+    display: list-item;
+    list-style-type: disc;
+    list-style-position: inside;
+    margin: 0.75rem 1.75rem;
+    color: #cfd8a9;
+}
+p::marker {
+    color: #9cee86;
+}
+section {
+    background: rgba(18, 24, 14, 0.88);
+    border: 1px solid rgba(153, 221, 97, 0.18);
+    border-radius: 22px;
+    margin: 1.75rem auto;
+    padding: 1.5rem 1.75rem;
+    max-width: 940px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
+}
+section:target {
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+}
+#nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    background-color: rgba(17, 22, 14, 0.95);
+    border-radius: 20px;
+    padding: 16px 18px;
+    margin: 0 auto 1.5rem;
+    max-width: 1040px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.38);
+    border: 1px solid rgba(160, 219, 108, 0.18);
+}
+#nav a {
+    text-decoration: none;
+    color: #d8e6b7;
+    padding: 10px 16px;
+    border-radius: 14px;
+    transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+    border: 1px solid transparent;
+}
+#nav a:hover,
+#nav a.active {
+    transform: translateY(-3px);
+    background-color: rgba(160, 219, 108, 0.18);
+    color: #fff;
+}
+#nav a.active {
+    box-shadow: inset 0 0 0 1px rgba(160, 219, 108, 0.24);
+}
+#nav a + a {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+#nav a:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+
+/* Credits box */
+.credits-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 0.5rem;
+}
+.credits-box {
+    background: rgba(0,0,0,0.65);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    max-width: 920px;
+    width: calc(100% - 2rem);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    text-align: center;
+}
+.credits-text { 
+    font-weight: 600;
+}
+
+/* Footer boxed style */
+footer {
+    background-color: rgba(16, 20, 12, 0.96);
+    border: 1px solid rgba(160, 219, 108, 0.18);
+    border-radius: 22px;
+    padding: 0.9rem 1.2rem;
+    max-width: 920px;
+    margin: 1.25rem auto 2.5rem;
+    text-align: center;
+    box-shadow: 0 18px 38px rgba(0,0,0,0.36);
+    color: #e8f6c8;
+}
+/* Full screen loading overlay */
+#loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loader-container.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* The Dirt Block */
+.minecraft-block {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  background: linear-gradient(180deg, #a17c52 0%, #7c5e3f 100%);
+  border: 4px solid #5c3e26;
+  border-top-color: #cab38b;
+  border-radius: 8px;
+  box-shadow: 0 12px 0 #5c3e26;
+  overflow: hidden;
+}
+
+.minecraft-block::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(180deg, #ceb280 0%, #a17c52 100%);
+  transform: skewX(-45deg);
+  transform-origin: top left;
+}
+
+.minecraft-block::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(45deg, rgba(0,0,0,0.08) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.08) 75%, transparent 75%, transparent);
+  background-size: 16px 16px;
+}
+
+/* The Breaking Cracks Overlay */
+.breaking-cracks {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25) 0%, transparent 35%),
+              radial-gradient(circle at 70% 40%, rgba(255,255,255,0.18) 0%, transparent 30%),
+              repeating-linear-gradient(135deg, transparent 0 12px, rgba(0,0,0,0.35) 12px 14px, transparent 14px 20px);
+  opacity: 0;
+  animation: breakBlock 1.2s ease-in-out infinite alternate;
+}
+
+/* Text styling */
+.loading-text {
+  color: #d8ff8d;
+  font-family: 'Minecraftia', 'Courier New', monospace;
+  font-weight: bold;
+  margin-top: 20px;
+  text-shadow: 2px 2px 0px rgba(43, 106, 19, 0.7);
+}
+
+@keyframes breakBlock {
+  0% { opacity: 0.35; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.03); }
+}
+
+/* Hide the loader when the server is ready */
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}

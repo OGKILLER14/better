@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Ancient Builders</title>
+</head>
+<body class="page-loading">
+    <header>
+        <a href="index.html" class="back-button">&#8592;</a>
+        <h1><u>Minecraft Ancient Builders</u></h1>
+    </header>
+
+    <nav id="topic-nav">
+        <a href="#meeting-builders">Meeting Builders</a>
+        <a href="#exploring-ruins">Exploring Ruins</a>
+        <a href="#learning-past">Learning From the Past</a>
+    </nav>
+
+    <section id="meeting-builders">
+        <h2>Meeting the Ancient Builders</h2>
+        <img src="pic/Meeting the Ancient Builders.jpg" alt="Meeting the Ancient Builders" class="section-image" />
+        <p>Minecraft’s ancient builders are the creators of ruins like desert temples, woodland mansions, and ocean monuments. Their structures hint at a hidden history beneath the world’s surface.</p>
+        <p>Exploring these builds can give you rare loot, new challenges, and a sense of the story behind Minecraft’s world.</p>
+    </section>
+
+    <section id="exploring-ruins">
+        <h2>Exploring Ancient Ruins</h2>
+        <img src="pic/Exploring Ancient Ruins.jpg" alt="Exploring Ancient Ruins" class="section-image" />
+        <p>Approach ancient structures with care: many are guarded by strong mobs or traps. Use torches, armor, and a good weapon so you can explore without being overwhelmed.</p>
+        <p>These ruins are also excellent places to gather rare materials, like prismarine, enchanted books, or totems of undying.</p>
+    </section>
+
+    <section id="learning-past">
+        <h2>Learning From the Past</h2>
+        <img src="pic/Learning From the Past.jpg" alt="Learning From the Past" class="section-image" />
+        <p>Ancient builds inspire your own creations. Study the layout, block choice, and hidden mechanisms to make your own Minecraft structures more interesting and mysterious.</p>
+        <p>Whether you want to build a fortress, a temple, or a story-driven map, the remnants of ancient builders show how Minecraft can blend function and atmosphere.</p>
+    </section>
+
+    <footer>
+        &copy; 2024 Minecraft Ancient Builders
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.remove('page-loading');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const pageLinks = document.querySelectorAll('a[href$=".html"]');
+            const topicLinks = document.querySelectorAll('#topic-nav a');
+
+            function setActiveLink(hash) {
+                topicLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === hash);
+                });
+            }
+
+            topicLinks.forEach(link => {
+                link.addEventListener('click', event => {
+                    event.preventDefault();
+                    const section = document.querySelector(link.getAttribute('href'));
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                        history.replaceState(null, '', link.getAttribute('href'));
+                        setActiveLink(link.getAttribute('href'));
+                    }
+                });
+            });
+
+            pageLinks.forEach(link => {
+                if (link.getAttribute('href').endsWith('.html') && link.getAttribute('href') !== currentPage) {
+                    link.addEventListener('click', event => {
+                        event.preventDefault();
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => window.location.href = link.getAttribute('href'), 300);
+                    });
+                }
+            });
+
+            setActiveLink(window.location.hash || '#meeting-builders');
+        });
+    </script>
+</body>
+</html>

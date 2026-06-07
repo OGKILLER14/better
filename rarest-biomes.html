@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Rarest Biomes</title>
+</head>
+<body class="page-loading">
+    <header>
+        <a href="index.html" class="back-button">&#8592;</a>
+        <h1><u>Minecraft Rarest Biomes</u></h1>
+    </header>
+
+    <nav id="topic-nav">
+        <a href="#discovering-rare-biomes">Discovering Biomes</a>
+        <a href="#finding-rare-biomes">Finding Biomes</a>
+        <a href="#rare-biomes-special">Why They Are Special</a>
+    </nav>
+
+    <section id="discovering-rare-biomes">
+        <h2>Discovering Rare Biomes</h2>
+        <img src="pic/Discovering Rare Biomes.jpg" alt="Discovering Rare Biomes" class="section-image" />
+        <p>Rare biomes are the most unusual Minecraft environments, such as mushroom fields, bamboo jungles, and the frozen peaks. Finding them feels like a reward for thorough exploration.</p>
+        <p>These biomes often contain unique blocks, special mobs, and surprising landscapes that make them worth the search.</p>
+    </section>
+
+    <section id="finding-rare-biomes">
+        <h2>How to Find Rare Biomes</h2>
+        <img src="pic/How to Find Rare Biomes.jpg" alt="How to Find Rare Biomes" class="section-image" />
+        <p>Use maps, compasses, and seed explorers to narrow down rare biome locations, or travel along biome edges where rare terrain is more likely to appear.</p>
+        <p>In survival mode, prepare for long journeys by bringing food, torches, and a bed so you can safely explore and claim these special areas.</p>
+    </section>
+
+    <section id="rare-biomes-special">
+        <h2>What Makes Rare Biomes Special</h2>
+        <img src="pic/What Makes Rare Biomes Special.jpg" alt="What Makes Rare Biomes Special" class="section-image" />
+        <p>Rare biomes often have exclusive resources, like mushrooms in mushroom fields or pandas in bamboo jungles. They also add visual variety and make your Minecraft map feel more exciting.</p>
+        <p>Building a base near a rare biome can be both practical and beautiful, and it gives you reasons to revisit areas you already know.</p>
+    </section>
+
+    <footer>
+        &copy; 2024 Minecraft Rarest Biomes
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.remove('page-loading');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const pageLinks = document.querySelectorAll('a[href$=".html"]');
+            const topicLinks = document.querySelectorAll('#topic-nav a');
+
+            function setActiveLink(hash) {
+                topicLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === hash);
+                });
+            }
+
+            topicLinks.forEach(link => {
+                link.addEventListener('click', event => {
+                    event.preventDefault();
+                    const section = document.querySelector(link.getAttribute('href'));
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                        history.replaceState(null, '', link.getAttribute('href'));
+                        setActiveLink(link.getAttribute('href'));
+                    }
+                });
+            });
+
+            pageLinks.forEach(link => {
+                if (link.getAttribute('href').endsWith('.html') && link.getAttribute('href') !== currentPage) {
+                    link.addEventListener('click', event => {
+                        event.preventDefault();
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => window.location.href = link.getAttribute('href'), 300);
+                    });
+                }
+            });
+
+            setActiveLink(window.location.hash || '#discovering-rare-biomes');
+        });
+    </script>
+</body>
+</html>

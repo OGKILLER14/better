@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft DFU Optimization</title>
+</head>
+<body class="page-loading">
+    <header>
+        <a href="index.html" class="back-button">&#8592;</a>
+        <h1><u>Minecraft DFU Optimization</u></h1>
+    </header>
+
+    <nav id="topic-nav">
+        <a href="#what-dfu">What DFU Does</a>
+        <a href="#improve-performance">Improve Performance</a>
+        <a href="#practical-tips">Practical Tips</a>
+    </nav>
+
+    <section id="what-dfu">
+        <h2>What DFU Optimization Does</h2>
+            <img src="pic/What DFU Optimization Does.jpg" alt="What DFU Optimization Does" class="section-image" />
+        <p>DFU optimization improves how Minecraft updates chunks and renders the world, especially when many blocks change at once. It can help keep gameplay smooth when exploring complex redstone builds or busy farms.</p>
+        <p>In Minecraft, a lot of work happens behind the scenes to keep the world consistent. DFU optimization lets the game do that work more efficiently so you can focus on playing instead of lag.</p>
+    </section>
+
+    <section id="improve-performance">
+        <h2>How to Improve Performance</h2>
+            <img src="pic/How to Improve Performance.jpg" alt="How to Improve Performance" class="section-image" />
+        <p>To get the most from DFU optimizations, keep your base organized and avoid too many moving parts in one area. Use lighting, compact farms, and well-spaced redstone to reduce unnecessary updates.</p>
+        <p>A well-optimized world can still look amazing. You can build detailed structures and efficient machines while maintaining good performance by understanding which systems trigger updates and how to minimize them.</p>
+    </section>
+
+    <section id="practical-tips">
+        <h2>Practical Tips for Players</h2>
+            <img src="pic/Practical Tips for Players.jpg" alt="Practical Tips for Players" class="section-image" />
+        <p>Using a lower render distance, turning off fancy graphics, and keeping entity counts under control are all practical ways to improve your Minecraft experience alongside DFU optimization.</p>
+        <p>If you play on a server, these improvements can also help other players by reducing lag on shared farms and common areas.</p>
+    </section>
+
+    <footer>
+        &copy; 2024 Minecraft DFU Optimization
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.remove('page-loading');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const pageLinks = document.querySelectorAll('a[href$=".html"]');
+            const topicLinks = document.querySelectorAll('#topic-nav a');
+
+            function setActiveLink(hash) {
+                topicLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === hash);
+                });
+            }
+
+            topicLinks.forEach(link => {
+                link.addEventListener('click', event => {
+                    event.preventDefault();
+                    const section = document.querySelector(link.getAttribute('href'));
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                        history.replaceState(null, '', link.getAttribute('href'));
+                        setActiveLink(link.getAttribute('href'));
+                    }
+                });
+            });
+
+            pageLinks.forEach(link => {
+                if (link.getAttribute('href').endsWith('.html') && link.getAttribute('href') !== currentPage) {
+                    link.addEventListener('click', event => {
+                        event.preventDefault();
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => window.location.href = link.getAttribute('href'), 300);
+                    });
+                }
+            });
+
+            setActiveLink(window.location.hash || '#what-dfu');
+        });
+    </script>
+</body>
+</html>

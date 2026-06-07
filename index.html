@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Lore</title>
+
+</head>
+<body class="page-loading">
+    <div id="loader-container">
+        <div class="minecraft-block">
+            <div class="breaking-cracks"></div>
+        </div>
+        <p class="loading-text">Connecting to the server...</p>
+    </div>
+    <header>
+        <h1><u>Minecraft Lore</u></h1>
+    </header>
+    
+    <div id="nav">
+        <a href="home.html">Home</a>
+        <a href="adventure-maps.html">Adventure Maps</a>
+        <a href="dfu-optimization.html">DFU Optimization</a>
+        <a href="biome-blend.html">Biome Blend</a>
+        <a href="rarest-biomes.html">Rarest Biomes</a>
+        <a href="ancient-builders.html">Ancient Builders</a>
+    </div>
+
+    <section>
+        <img src="pic/mine.jpg" alt="Minecraft Image">
+        <h2>Minecraft: Best Adventure Maps On The Marketplace</h2>
+        <p>From cavernous temples to floating sky islands, the best Minecraft adventure maps on the Marketplace pack in hidden secrets, redstone puzzles, and unforgettable boss battles while honoring the game’s survival roots.</p>
+        <p>These worlds are designed around exploration, offering players new biomes, lore-filled villages, and custom mobs that feel like a natural extension of the base game rather than a separate minigame.</p>
+    </section>
+
+    <section>
+        <img src="pic/allay.jpg" alt="A Spirit's Journey Image">
+        <h2>A Spirit's Journey</h2>
+        <p>A Spirit's Journey is a great place to start when looking for the best Minecraft marketplace worlds to get lost in, because it blends narration, parkour, and environmental storytelling into every chapter.</p>
+        <p>Along the way, players encounter ancient ruins, mysterious portals, and subtle references to Minecraft’s nether history, making the adventure feel like a rediscovery of the world’s hidden magics and forgotten civilizations.</p>
+    </section>
+
+    <section>
+        <h2>Lazy DFU</h2>
+        <p>Lazy DFU focuses on optimizing a very specific piece of Minecraft rendering, reducing unnecessary chunk updates so your world can stay responsive even when you are sprinting across a dense redwood forest or mining deep in the ravine.</p>
+        <p>When Minecraft worlds generate thousands of blocks, every optimization matters, and Lazy DFU helps keep farms, mob grinders, and multiplayer servers running with fewer hitches while preserving the familiar feel of walking through the overworld.</p>
+    </section>
+
+    <section>
+        <img src="pic/bioms1.jpg" alt="Better Biome Blend Image">
+        <h2>Better Biome Blend</h2>
+        <p>This two-for-one mod makes your Minecraft world look better and run smoother with a more efficient biome blending algorithm, so the transition from jungle to savanna feels natural instead of clashing.</p>
+        <p>Biome blending is what makes exploration feel immersive, and with smarter transitions, the game can keep its signature blocky style while letting rivers, mountains, and rare biomes flow together more realistically.</p>
+    </section>
+
+    <section>
+        <h3>Minecraft: The Rarest Biomes</h3>
+        <p>Now, you should be able to spread your biome transition radius out to as far as 29x29 blocks without incurring a significant performance penalty, which makes searching for the rarest Minecraft biomes much more rewarding.</p>
+        <p>From the sparkling ice spikes of the frozen peaks to the crimson forests of the Nether, the rarest biomes are the places where builders and explorers discover the game’s most unusual resources and secrets.</p>
+        <p>Whether you want a survival base in the mushroom fields or a treasure hunt in a deep dark biome, understanding these rare biome types helps you plan your journey across the Overworld, Nether, and End.</p>
+    </section>
+
+    <section>
+        <img src="pic/jungle.jpg" alt="Ancient Race Of Builders Image">
+        <h2>Ancient Race Of Builders</h2>
+        <p>It should be evident to anyone who has played Minecraft before that there is a lot of history to the land of Minecraft before Steve shows up, hidden in ocean monuments, desert temples, and woodland mansions.</p>
+        <p>The very existence of these superstructures tells us that there was an advanced race of builders that existed at one point, and every ancient ruin you find adds another piece to the story of how the Endermen, Illagers, and villagers shaped the world.</p>
+        <p>Exploring these sites with torches and enchanted gear rewards you with rare loot, strongholds, and the feeling that Minecraft’s world is much older than the current player’s journey.</p>
+    </section>
+
+    
+
+    <footer>
+        &copy; OGKILLER14 — 2026 site recreation
+    </footer>
+
+    <script>
+        document.body.classList.add('page-loading');
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.remove('page-loading');
+            const navLinks = document.querySelectorAll('#nav a');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href.endsWith('.html') && href !== currentPage) {
+                    link.addEventListener('click', event => {
+                        event.preventDefault();
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 300);
+                    });
+                }
+            });
+        });
+    </script>
+
+   <script>window.addEventListener('load', function() {
+  const loader = document.getElementById('loader-container');
+  
+  // Optional: Add a slight 500ms delay so people can actually see the animation play
+  setTimeout(() => {
+    loader.classList.add('fade-out');
+  }, 500);
+});</script>
+</body>
+</html>

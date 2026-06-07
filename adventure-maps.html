@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Adventure Maps</title>
+</head>
+<body class="page-loading">
+    <header>
+        <a href="index.html" class="back-button">&#8592;</a>
+        <h1><u>Minecraft Adventure Maps</u></h1>
+    </header>
+
+    <nav id="topic-nav">
+        <a href="#explore-maps">Explore Maps</a>
+        <a href="#getting-started-map">Getting Started</a>
+        <a href="#why-maps-matter">Why It Matters</a>
+    </nav>
+
+    <section id="explore-maps">
+        <h2>Explore the Best Adventure Maps</h2>
+        <img src="pic/Explore the Best Adventure Maps.jpg" alt="Explore the Best Adventure Maps" class="section-image" />
+        <p>Adventure maps are custom Minecraft worlds made to be played as a story, challenge, or puzzle. These maps can include quests, hidden treasures, parkour runs, and dramatic boss fights.</p>
+        <p>Playing an adventure map teaches you how the game can be used beyond survival; you learn to navigate custom terrain, solve puzzles, and use your Minecraft tools in creative ways.</p>
+        <p>Many top adventure maps also have lore, bosses, and secret endings. This means Minecraft does more than just let you build — it creates curated experiences that feel like interactive books and games at once.</p>
+    </section>
+
+    <section id="getting-started-map">
+        <h2>Getting Started With Adventure Map Mode</h2>
+        <img src="pic/Getting Started With Adventure Map Mode.jpg" alt="Getting Started With Adventure Map Mode" class="section-image" />
+        <p>To start an adventure map, download it and place it in your Minecraft saves folder, then choose the world in-game. Some maps require command blocks or resource packs, so read the instructions carefully.</p>
+        <p>Once you enter the map, follow the signs and stories. Adventure maps often guide you through the world using hints, dialog, and hidden passages, so pay close attention to your surroundings.</p>
+    </section>
+
+    <section id="why-maps-matter">
+        <h2>Why Adventure Maps Matter</h2>
+        <img src="pic/Why Adventure Maps Matter.jpg" alt="Why Adventure Maps Matter" class="section-image" />
+        <p>Adventure maps let players explore narratives that are not possible in a standard Minecraft world. They show how powerful the game is as a platform for creativity and storytelling.</p>
+        <p>Even if you prefer survival mode, trying an adventure map can inspire better builds, new redstone ideas, and more adventurous gameplay in your own worlds.</p>
+    </section>
+
+    <footer>
+        &copy; 2024 Minecraft Adventure Maps
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.remove('page-loading');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const pageLinks = document.querySelectorAll('a[href$=".html"]');
+            const topicLinks = document.querySelectorAll('#topic-nav a');
+
+            function setActiveLink(hash) {
+                topicLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === hash);
+                });
+            }
+
+            topicLinks.forEach(link => {
+                link.addEventListener('click', event => {
+                    event.preventDefault();
+                    const section = document.querySelector(link.getAttribute('href'));
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                        history.replaceState(null, '', link.getAttribute('href'));
+                        setActiveLink(link.getAttribute('href'));
+                    }
+                });
+            });
+
+            pageLinks.forEach(link => {
+                if (link.getAttribute('href').endsWith('.html') && link.getAttribute('href') !== currentPage) {
+                    link.addEventListener('click', event => {
+                        event.preventDefault();
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => window.location.href = link.getAttribute('href'), 300);
+                    });
+                }
+            });
+
+            setActiveLink(window.location.hash || '#explore-maps');
+        });
+    </script>
+</body>
+</html>
