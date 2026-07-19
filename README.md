@@ -1,2 +1,2 @@
-# better
-this is a recreation of a old site that was broken
+# Simply better
+This is a modified version of an Old website i have created.
